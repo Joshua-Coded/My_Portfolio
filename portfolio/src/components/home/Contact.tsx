@@ -80,12 +80,12 @@ export default function Contact() {
                                 </div>
                                 <div>
                                     <p className="font-medium text-white">Email</p>
-                                    <p className="text-sm">your.email@example.com</p>
+                                    <p className="text-sm">j.alana@alustudent.com</p>
                                 </div>
                             </a>
 
                             <a
-                                href="https://github.com/yourusername"
+                                href="https://github.com/Joshua-Coded"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center space-x-4 text-gray-400 hover:text-primary transition-colors group"
@@ -95,12 +95,12 @@ export default function Contact() {
                                 </div>
                                 <div>
                                     <p className="font-medium text-white">Github</p>
-                                    <p className="text-sm">github.com/yourusername</p>
+                                    <p className="text-sm">Joshua-Coded</p>
                                 </div>
                             </a>
 
                             <a
-                                href="https://linkedin.com/in/yourusername"
+                                href="https://www.linkedin.com/in/joshua-alana-5760b3196/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center space-x-4 text-gray-400 hover:text-primary transition-colors group"
@@ -110,7 +110,7 @@ export default function Contact() {
                                 </div>
                                 <div>
                                     <p className="font-medium text-white">LinkedIn</p>
-                                    <p className="text-sm">linkedin.com/in/yourusername</p>
+                                    <p className="text-sm">Joshua Alana</p>
                                 </div>
                             </a>
                         </div>

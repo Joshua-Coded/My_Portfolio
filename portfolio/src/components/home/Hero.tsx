@@ -3,9 +3,6 @@ import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail, Terminal } from "lucide-react";
 import { useEffect, useState } from "react";
 
-// src/components/home/Hero.tsx
-
-
 export default function Hero() {
     const [typedText, setTypedText] = useState('')
     const textToType = "Kernel Engineer & Full Stack Developer"
@@ -71,7 +68,7 @@ export default function Hero() {
                     variants={itemVariants}
                     className="text-4xl md:text-6xl font-bold mb-6"
                 >
-                    Hi, I'm <span className="gradient-text">Your Name</span>
+                    Hi, I'm <span className="gradient-text">Joshua Alana</span>
                 </motion.h1>
 
                 <motion.div
@@ -108,7 +105,7 @@ export default function Hero() {
                     className="flex justify-center space-x-6"
                 >
                     <a
-                        href="https://github.com/yourusername"
+                        href="https://github.com/Joshua-Coded"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-gray-400 hover:text-primary transition-colors"
@@ -116,7 +113,7 @@ export default function Hero() {
                         <Github className="w-6 h-6" />
                     </a>
                     <a
-                        href="https://linkedin.com/in/yourusername"
+                        href="https://www.linkedin.com/in/joshua-alana-5760b3196/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-gray-400 hover:text-primary transition-colors"

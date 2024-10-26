@@ -18,7 +18,7 @@ const skills = [
         category: "System Programming",
         icon: Terminal,
         skills: [
-            { name: "C/C++", level: 90 },
+            { name: "C", level: 90 },
             { name: "Linux Kernel", level: 85 },
             { name: "System Architecture", level: 88 }
         ]
@@ -37,8 +37,8 @@ const skills = [
         icon: Server,
         skills: [
             { name: "Node.js", level: 85 },
-            { name: "Java/Spring", level: 82 },
-            { name: "Python", level: 80 }
+            { name: "Java/Spring", level: 82 }
+
         ]
     },
     {

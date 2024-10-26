@@ -3,22 +3,33 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
+// src/components/home/Github.tsx
+
 import {
     Github as GithubIcon,
     GitBranch,
     GitCommit,
     GitPullRequest,
     Star,
-    GitFork
+    GitFork,
+    Users
 } from 'lucide-react'
 
+interface GithubStats {
+    followers: number;
+    following: number;
+    publicRepos: number;
+    totalStars: number;
+}
+
 interface Repository {
+    id: number;
     name: string;
     description: string;
-    stars: number;
-    forks: number;
+    stargazers_count: number;
+    forks_count: number;
     language: string;
-    url: string;
+    html_url: string;
 }
 
 export default function Github() {
@@ -27,55 +38,55 @@ export default function Github() {
         triggerOnce: true
     })
 
-    const [githubStats, setGithubStats] = useState({
-        repos: 0,
-        commits: 0,
-        pullRequests: 0,
-        contributions: 0
+    const [stats, setStats] = useState<GithubStats>({
+        followers: 0,
+        following: 0,
+        publicRepos: 0,
+        totalStars: 0
     })
 
-    const [repos, setRepos] = useState<Repository[]>([
-        {
-            name: "kernel-module-manager",
-            description: "Advanced Linux kernel module management system",
-            stars: 120,
-            forks: 25,
-            language: "C",
-            url: "https://github.com/yourusername/kernel-module-manager"
-        },
-        {
-            name: "cloud-infra",
-            description: "Infrastructure as Code solutions",
-            stars: 85,
-            forks: 15,
-            language: "TypeScript",
-            url: "https://github.com/yourusername/cloud-infra"
-        },
-        {
-            name: "analytics-dashboard",
-            description: "Real-time analytics dashboard",
-            stars: 95,
-            forks: 20,
-            language: "JavaScript",
-            url: "https://github.com/yourusername/analytics-dashboard"
-        }
-    ])
+    const [repos, setRepos] = useState<Repository[]>([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        // Simulate loading Github stats
-        setGithubStats({
-            repos: 25,
-            commits: 1243,
-            pullRequests: 156,
-            contributions: 892
-        })
+        const fetchGithubData = async () => {
+            try {
+                // Fetch user data
+                const userResponse = await fetch('https://api.github.com/users/Joshua-Coded')
+                const userData = await userResponse.json()
+
+                // Fetch repositories
+                const reposResponse = await fetch('https://api.github.com/users/Joshua-Coded/repos?sort=stars&per_page=6')
+                const reposData = await reposResponse.json()
+
+                // Calculate total stars
+                const totalStars = reposData.reduce((acc: number, repo: Repository) =>
+                    acc + repo.stargazers_count, 0
+                )
+
+                setStats({
+                    followers: userData.followers,
+                    following: userData.following,
+                    publicRepos: userData.public_repos,
+                    totalStars: totalStars
+                })
+
+                setRepos(reposData)
+                setLoading(false)
+            } catch (error) {
+                console.error('Error fetching GitHub data:', error)
+                setLoading(false)
+            }
+        }
+
+        fetchGithubData()
     }, [])
 
     const statsItems = [
-        { label: 'Repositories', value: githubStats.repos, icon: GithubIcon },
-        { label: 'Commits', value: githubStats.commits, icon: GitCommit },
-        { label: 'Pull Requests', value: githubStats.pullRequests, icon: GitPullRequest },
-        { label: 'Contributions', value: githubStats.contributions, icon: GitBranch }
+        { label: 'Followers', value: stats.followers, icon: Users },
+        { label: 'Following', value: stats.following, icon: Users },
+        { label: 'Repositories', value: stats.publicRepos, icon: GithubIcon },
+        { label: 'Total Stars', value: stats.totalStars, icon: Star }
     ]
 
     return (
@@ -112,7 +123,11 @@ export default function Github() {
                             >
                                 <Icon className="w-8 h-8 text-primary mx-auto mb-3" />
                                 <div className="text-2xl font-bold text-white mb-1">
-                                    {item.value.toLocaleString()}
+                                    {loading ? (
+                                        <div className="h-8 bg-gray-700 rounded animate-pulse" />
+                                    ) : (
+                                        item.value.toLocaleString()
+                                    )}
                                 </div>
                                 <div className="text-gray-400">{item.label}</div>
                             </motion.div>
@@ -121,73 +136,58 @@ export default function Github() {
                     )}
                 </div>
 
-                {/* Contribution Graph */}
-                <div className="card mb-16">
-                    <h3 className="text-xl font-semibold text-white mb-6">
-                        Contribution Activity
-                    </h3>
-                    <div className="h-48 bg-dark rounded-lg overflow-hidden">
-                        <div className="grid grid-cols-52 gap-1 p-4">
-                            {[...Array(52)].map((_, weekIndex) => (
-                                <div key={weekIndex} className="grid grid-rows-7 gap-1">
-                                    {[...Array(7)].map((_, dayIndex) => (
-                                        <div
-                                            key={dayIndex}
-                                            className={`w-3 h-3 rounded-sm ${Math.random() > 0.5
-                                                    ? 'bg-primary'
-                                                    : Math.random() > 0.7
-                                                        ? 'bg-primary/60'
-                                                        : 'bg-dark-lighter'
-                                                }`}
-                                        />
-                                    ))}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-
                 {/* Featured Repositories */}
                 <div className="grid md:grid-cols-3 gap-6">
-                    {repos.map((repo, index) => (
-                        <motion.a
-                            key={repo.name}
-                            href={repo.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                            transition={{ delay: index * 0.1 }}
-                            className="card hover:border-primary/30 transition-colors"
-                        >
-                            <div className="flex justify-between items-start mb-4">
-                                <GithubIcon className="w-6 h-6 text-primary" />
-                                <div className="flex items-center space-x-4">
-                                    <div className="flex items-center space-x-1">
-                                        <Star className="w-4 h-4 text-gray-400" />
-                                        <span className="text-gray-400">{repo.stars}</span>
-                                    </div>
-                                    <div className="flex items-center space-x-1">
-                                        <GitFork className="w-4 h-4 text-gray-400" />
-                                        <span className="text-gray-400">{repo.forks}</span>
+                    {loading ? (
+                        // Loading skeleton
+                        [...Array(6)].map((_, index) => (
+                            <div key={index} className="card animate-pulse">
+                                <div className="h-4 bg-gray-700 rounded w-3/4 mb-4" />
+                                <div className="h-4 bg-gray-700 rounded w-1/2" />
+                            </div>
+                        ))
+                    ) : (
+                        repos.map((repo) => (
+                            <motion.a
+                                key={repo.id}
+                                href={repo.html_url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                                className="card hover:border-primary/30 transition-colors"
+                            >
+                                <div className="flex justify-between items-start mb-4">
+                                    <GithubIcon className="w-6 h-6 text-primary" />
+                                    <div className="flex items-center space-x-4">
+                                        <div className="flex items-center space-x-1">
+                                            <Star className="w-4 h-4 text-gray-400" />
+                                            <span className="text-gray-400">{repo.stargazers_count}</span>
+                                        </div>
+                                        <div className="flex items-center space-x-1">
+                                            <GitFork className="w-4 h-4 text-gray-400" />
+                                            <span className="text-gray-400">{repo.forks_count}</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <h3 className="text-lg font-semibold text-white mb-2">
-                                {repo.name}
-                            </h3>
-                            <p className="text-gray-400 mb-4">
-                                {repo.description}
-                            </p>
+                                <h3 className="text-lg font-semibold text-white mb-2">
+                                    {repo.name}
+                                </h3>
+                                <p className="text-gray-400 mb-4 line-clamp-2">
+                                    {repo.description || 'No description available'}
+                                </p>
 
-                            <div className="flex items-center mt-auto">
-                                <span className="px-2 py-1 text-sm bg-dark rounded-full text-gray-300">
-                                    {repo.language}
-                                </span>
-                            </div>
-                        </motion.a>
-                    ))}
+                                {repo.language && (
+                                    <div className="flex items-center mt-auto">
+                                        <span className="px-2 py-1 text-sm bg-dark rounded-full text-gray-300">
+                                            {repo.language}
+                                        </span>
+                                    </div>
+                                )}
+                            </motion.a>
+                        ))
+                    )}
                 </div>
             </motion.div>
         </section>

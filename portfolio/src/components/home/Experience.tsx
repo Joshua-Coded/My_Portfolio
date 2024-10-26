@@ -6,42 +6,59 @@ import { useInView } from "react-intersection-observer";
 const experiences = [
     {
         id: 1,
-        title: "Senior Full Stack Developer",
-        company: "Tech Company",
-        duration: "2023 - Present",
-        description: "Leading development of distributed systems and cloud infrastructure",
+        title: "Lead Engineer",
+        company: "Ladx",
+        duration: "2024 - Present",
+        description: "Leading development of scalable applications and cloud infrastructure solutions",
         responsibilities: [
-            "Architected and implemented microservices using Kubernetes",
-            "Led migration of legacy systems to modern cloud architecture",
-            "Mentored junior developers in system design and best practices"
+            "Architecting and implementing full-stack applications using React and Node.js",
+            "Managing cloud infrastructure with AWS and Docker",
+            "Leading technical decisions and mentoring team members",
+            "Implementing CI/CD pipelines and DevOps practices"
         ],
-        technologies: ["TypeScript", "React", "Node.js", "AWS", "Kubernetes"]
+        technologies: ["React", "Node.js", "TypeScript", "AWS", "Docker", "CI/CD"]
     },
     {
         id: 2,
-        title: "Kernel Engineer",
-        company: "System Solutions Inc",
-        duration: "2021 - 2023",
-        description: "Developed and maintained Linux kernel modules",
+        title: "Backend Engineer",
+        company: "Invictus Security Interests",
+        duration: "2023 - 2024",
+        description: "Developing and maintaining enterprise-level applications using Java technologies",
         responsibilities: [
-            "Implemented kernel modules for improved system performance",
-            "Collaborated on driver development for custom hardware",
-            "Optimized system calls for enhanced efficiency"
+            "Building robust backend systems using Spring Boot and Java",
+            "Working with enterprise platforms like Liferay and Apache OFBiz",
+            "Implementing security features and best practices",
+            "Developing and maintaining Cyclos payment systems"
         ],
-        technologies: ["C", "Linux Kernel", "Driver Development", "System Programming"]
+        technologies: ["Java", "Spring Boot", "Cyclos", "OFBiz", "Liferay", "Exo Platform"]
     },
     {
         id: 3,
-        title: "Software Engineer",
-        company: "Mobile Tech",
-        duration: "2019 - 2021",
-        description: "Developed native Android applications and backend services",
+        title: "Learning Experience Designer",
+        company: "ALU",
+        duration: "2023 - 2024",
+        description: "Designing and implementing educational technology solutions",
         responsibilities: [
-            "Built high-performance Android applications",
-            "Designed and implemented RESTful APIs",
-            "Improved app performance and user experience"
+            "Creating interactive learning experiences",
+            "Implementing educational technology solutions",
+            "Collaborating with educators to optimize learning outcomes",
+            "Developing content management systems for educational materials"
         ],
-        technologies: ["Kotlin", "Java", "Spring Boot", "Android SDK"]
+        technologies: ["EdTech", "Learning Management Systems", "Content Development", "Instructional Design"]
+    },
+    {
+        id: 4,
+        title: "Data Engineer",
+        company: "AFS Forum",
+        duration: "2024 - Present",
+        description: "Building and maintaining data pipeline infrastructure",
+        responsibilities: [
+            "Designing and implementing data pipelines",
+            "Working with big data processing tools",
+            "Creating data visualization dashboards",
+            "Optimizing database performance and queries"
+        ],
+        technologies: ["Python", "SQL", "Big Data", "ETL", "Data Visualization", "Analytics"]
     }
 ]
 
