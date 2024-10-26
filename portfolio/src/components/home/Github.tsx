@@ -7,9 +7,6 @@ import { useInView } from "react-intersection-observer";
 
 import {
     Github as GithubIcon,
-    GitBranch,
-    GitCommit,
-    GitPullRequest,
     Star,
     GitFork,
     Users

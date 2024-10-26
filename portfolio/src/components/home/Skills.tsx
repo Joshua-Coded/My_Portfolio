@@ -5,12 +5,8 @@ import { useInView } from "react-intersection-observer";
 import {
     Terminal,
     Server,
-    Database,
     Cloud,
     Monitor,
-    //   Tool,
-    Settings,
-    Layers
 } from 'lucide-react'
 
 const skills = [

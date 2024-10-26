@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Linkedin, Mail, Send } from "lucide-react";
+import { Github, Linkedin, Mail, Send } from "lucide-react";
 import { useState } from "react";
 import { useInView } from "react-intersection-observer";
 
@@ -48,7 +48,7 @@ export default function Contact() {
                         Get In <span className="gradient-text">Touch</span>
                     </h2>
                     <p className="text-gray-400 max-w-2xl mx-auto">
-                        I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+                        I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
                     </p>
                 </div>
 
@@ -65,7 +65,7 @@ export default function Contact() {
                                 Contact Information
                             </h3>
                             <p className="text-gray-400">
-                                Feel free to reach out through any of these channels. I'll get back to you as soon as possible.
+                                Feel free to reach out through any of these channels. if that&apos;s what you&apos;re looking for.
                             </p>
                         </div>
 

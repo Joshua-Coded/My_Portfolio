@@ -1,6 +1,6 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import { Code2, ExternalLink, Folder, Github } from "lucide-react";
+import { ExternalLink, Folder, Github } from "lucide-react";
 import { useState } from "react";
 import { useInView } from "react-intersection-observer";
 
@@ -88,8 +88,8 @@ export default function Projects() {
                             key={category.id}
                             onClick={() => setActiveCategory(category.id)}
                             className={`px-4 py-2 rounded-full transition-colors ${activeCategory === category.id
-                                    ? 'bg-primary text-white'
-                                    : 'bg-dark-lighter text-gray-400 hover:text-primary'
+                                ? 'bg-primary text-white'
+                                : 'bg-dark-lighter text-gray-400 hover:text-primary'
                                 }`}
                         >
                             {category.label}
