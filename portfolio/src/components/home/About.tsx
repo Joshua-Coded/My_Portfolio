@@ -1,52 +1,26 @@
 "use client";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-// src/components/home/About.tsx
-
 import {
-    Terminal,
-    Code2,
-    Server,
-    Database,
-    Cloud,
     Cpu,
-    // Git,
-    Container
+    Code2,
+    Container,
+    Cloud
 } from 'lucide-react'
 
 export default function About() {
     const [ref, inView] = useInView({
         threshold: 0.1,
-        triggerOnce: true,
+        triggerOnce: true
     })
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.2
-            }
-        }
-    }
-
-    const itemVariants = {
-        hidden: { y: 20, opacity: 0 },
-        visible: {
-            y: 0,
-            opacity: 1,
-            transition: {
-                duration: 0.5
-            }
-        }
-    }
-
     const skills = [
-        { icon: Cpu, label: 'Kernel Development', desc: 'Linux kernel modules and system programming' },
-        { icon: Code2, label: 'Full Stack Development', desc: 'React, TypeScript, Node.js' },
-        { icon: Container, label: 'DevOps', desc: 'Docker, Kubernetes, Terraform' },
-        { icon: Cloud, label: 'Cloud Architecture', desc: 'AWS, distributed systems' },
+        { icon: Cpu, label: 'Kernel Development', desc: 'Linux kernel modules' },
+        { icon: Code2, label: 'Full Stack', desc: 'React, TypeScript, Node.js' },
+        { icon: Container, label: 'DevOps', desc: 'Docker, Kubernetes' },
+        { icon: Cloud, label: 'Cloud', desc: 'AWS, Distributed Systems' }
     ]
 
     return (
@@ -56,12 +30,26 @@ export default function About() {
 
             <motion.div
                 ref={ref}
-                variants={containerVariants}
+                variants={{
+                    hidden: { opacity: 0 },
+                    visible: {
+                        opacity: 1,
+                        transition: {
+                            staggerChildren: 0.2
+                        }
+                    }
+                }}
                 initial="hidden"
                 animate={inView ? "visible" : "hidden"}
                 className="container mx-auto px-4 relative z-10"
             >
-                <motion.div variants={itemVariants} className="text-center mb-16">
+                <motion.div
+                    variants={{
+                        hidden: { y: 20, opacity: 0 },
+                        visible: { y: 0, opacity: 1 }
+                    }}
+                    className="text-center mb-16"
+                >
                     <h2 className="text-3xl md:text-4xl font-bold mb-4">
                         About <span className="gradient-text">Me</span>
                     </h2>
@@ -71,12 +59,20 @@ export default function About() {
                 </motion.div>
 
                 <div className="grid md:grid-cols-2 gap-12 items-center">
-                    <motion.div variants={itemVariants} className="relative">
-                        <div className="aspect-square rounded-lg overflow-hidden bg-dark">
-                            <img
-                                src="/api/placeholder/500/500"
-                                alt="Profile"
-                                className="object-cover w-full h-full opacity-90 hover:opacity-100 transition-opacity"
+                    <motion.div
+                        variants={{
+                            hidden: { x: -20, opacity: 0 },
+                            visible: { x: 0, opacity: 1 }
+                        }}
+                        className="relative"
+                    >
+                        <div className="aspect-square rounded-lg overflow-hidden bg-dark relative">
+                            <Image
+                                src="/profile.jpeg"
+                                alt="Your Name - Profile Picture"
+                                fill
+                                priority
+                                className="object-cover hover:scale-105 transition-transform duration-500"
                             />
                         </div>
                         {/* Decorative elements */}
@@ -84,7 +80,13 @@ export default function About() {
                         <div className="absolute -top-6 -left-6 w-48 h-48 border border-primary/20 rounded-lg -z-10" />
                     </motion.div>
 
-                    <motion.div variants={itemVariants} className="space-y-6">
+                    <motion.div
+                        variants={{
+                            hidden: { x: 20, opacity: 0 },
+                            visible: { x: 0, opacity: 1 }
+                        }}
+                        className="space-y-6"
+                    >
                         <div className="prose prose-invert">
                             <p className="text-lg text-gray-300">
                                 With a deep passion for system-level programming and modern web technologies,
@@ -101,7 +103,10 @@ export default function About() {
                             {skills.map(({ icon: Icon, label, desc }) => (
                                 <motion.div
                                     key={label}
-                                    variants={itemVariants}
+                                    variants={{
+                                        hidden: { y: 20, opacity: 0 },
+                                        visible: { y: 0, opacity: 1 }
+                                    }}
                                     className="p-4 rounded-lg bg-dark hover:bg-dark/50 transition-colors"
                                 >
                                     <Icon className="w-8 h-8 text-primary mb-2" />

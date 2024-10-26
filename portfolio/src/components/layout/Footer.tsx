@@ -2,8 +2,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-// src/components/layout/Footer.tsx
-
 import {
     Github,
     Linkedin,
@@ -38,17 +36,17 @@ export default function Footer() {
     const socialLinks = [
         {
             name: 'Github',
-            href: 'https://github.com/yourusername',
+            href: 'https://github.com/Joshua-Coded',
             icon: Github
         },
         {
             name: 'LinkedIn',
-            href: 'https://linkedin.com/in/yourusername',
+            href: 'https://www.linkedin.com/in/joshua-alana-5760b3196/',
             icon: Linkedin
         },
         {
             name: 'Email',
-            href: 'mailto:your.email@example.com',
+            href: 'mailto:j.alana@alustudent.com',
             icon: Mail
         }
     ]
@@ -108,13 +106,13 @@ export default function Footer() {
                         <ul className="space-y-2 text-gray-400">
                             <li>
                                 <a
-                                    href="mailto:your.email@example.com"
+                                    href="mailto:j.alana@alustudent.com"
                                     className="hover:text-primary transition-colors"
                                 >
-                                    your.email@example.com
+                                    j.alana@alustudent.com
                                 </a>
                             </li>
-                            <li>San Francisco, CA</li>
+                            <li>Kigali, Rwanda</li>
                             <li className="flex items-center space-x-2">
                                 <Coffee className="w-4 h-4" />
                                 <span>Available for freelance</span>
@@ -129,7 +127,7 @@ export default function Footer() {
                         <div className="flex items-center space-x-2 text-gray-400">
                             <span>© {new Date().getFullYear()}</span>
                             <Heart className="w-4 h-4 text-red-500" />
-                            <span>Built by Your Name</span>
+                            <span>Built by Joshua Alana</span>
                         </div>
 
                         <button

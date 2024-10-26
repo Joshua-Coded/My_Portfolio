@@ -49,10 +49,10 @@ export default function Navbar() {
                             </Link>
                         ))}
                         <div className="flex items-center space-x-4 ml-4">
-                            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+                            <a href="https://github.com/Joshua-Coded" target="_blank" rel="noopener noreferrer">
                                 <Github className="w-5 h-5 text-gray-400 hover:text-primary transition-colors" />
                             </a>
-                            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
+                            <a href="https://www.linkedin.com/in/joshua-alana-5760b3196/" target="_blank" rel="noopener noreferrer">
                                 <Linkedin className="w-5 h-5 text-gray-400 hover:text-primary transition-colors" />
                             </a>
                         </div>
