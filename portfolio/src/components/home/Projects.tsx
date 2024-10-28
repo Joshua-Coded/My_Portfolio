@@ -7,10 +7,10 @@ import { useInView } from "react-intersection-observer";
 const projects = [
     {
         id: 1,
-        title: "Kernel Module Manager",
-        description: "Advanced Linux kernel module management system with real-time monitoring",
+        title: "Task Scheduling System",
+        description: "A C-based task management system designed for small companies to manage and prioritize tasks efficiently.",
         tags: ["C", "Linux Kernel", "System Programming"],
-        github: "https://github.com/yourusername/kernel-module-manager",
+        github: "https://github.com/Joshua-Coded/task_scheduling_system",
         live: "https://demo-link",
         category: "systems"
     },
